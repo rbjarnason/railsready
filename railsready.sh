@@ -82,7 +82,7 @@ else
 fi
 
 #Download the distro specific commands and run them
-sudo wget --no-check-certificate -O $(cd && pwd)/railsready/src/$distro.sh https://github.com/joshfng/railsready/raw/master/recipes/$distro.sh && $(cd && pwd)/railsready/src && bash $distro.sh
+sudo wget --no-check-certificate -O $(cd && pwd)/railsready/src/$distro.sh https://github.com/joshfng/railsready/raw/unstable/recipes/$distro.sh && $(cd && pwd)/railsready/src && bash $distro.sh
 
 if [ $whichRuby -eq 1 ] ; then
   # Install Ruby
