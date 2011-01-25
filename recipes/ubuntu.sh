@@ -23,7 +23,7 @@ log_file=$8
 if command -v aptitude >/dev/null 2>&1 ; then
   pm="aptitude"
 elif command -v $pm >/dev/null 2>&1 ; then
-  pm="$pm"
+  pm="apt-get"
 fi
 
 # Update the system before going any further
