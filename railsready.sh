@@ -13,7 +13,8 @@ ruby_source_url="ftp://ftp.ruby-lang.org//pub/ruby/1.9/ruby-1.9.2-p136.tar.gz"
 ruby_source_tar_name="ruby-1.9.2-p136.tar.gz"
 ruby_source_dir_name="ruby-1.9.2-p136"
 script_runner=$(whoami)
-log_file=$(cd && pwd)/railsready/install.log
+railsready_path=$(cd && pwd)/railsready
+log_file="$railsready_path/install.log"
 
 control_c()
 {
@@ -81,8 +82,9 @@ else
   exit 1
 fi
 
+echo -e "\n=> Downloading and running recipe for $distro..."
 #Download the distro specific commands and run them
-sudo wget --no-check-certificate -O $(cd && pwd)/railsready/src/$distro.sh https://github.com/joshfng/railsready/raw/unstable/recipes/$distro.sh && $(cd && pwd)/railsready/src && bash $distro.sh
+sudo wget --no-check-certificate -O "$railsready_path/src/$distro.sh" https://github.com/joshfng/railsready/raw/unstable/recipes/$distro.sh && cd "$railsready_path/src" && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $railsready_path $log_file
 
 if [ $whichRuby -eq 1 ] ; then
   # Install Ruby

@@ -14,4 +14,5 @@ ruby_source_tar_name=$4
 ruby_source_dir_name=$5
 whichRuby=$6
 script_runner=$(whoami)
-log_file=$(cd && pwd)/railsready/install.log
+railsready_path=$7
+log_file=$8
