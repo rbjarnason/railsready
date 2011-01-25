@@ -6,6 +6,8 @@
 # Contributions from: Wayne E. Seguin <wayneeseguin@gmail.com>
 # Contributions from: Ryan McGeary <ryan@mcgeary.org>
 #
+shopt -s nocaseglob
+set -e
 
 ruby_version="1.9.2"
 ruby_version_string="1.9.2p136"
@@ -15,6 +17,7 @@ ruby_source_dir_name="ruby-1.9.2-p136"
 script_runner=$(whoami)
 railsready_path=$(cd && pwd)/railsready
 log_file="$railsready_path/install.log"
+distro_sig=$(cat /etc/issue)
 
 control_c()
 {
@@ -25,9 +28,6 @@ control_c()
 # trap keyboard interrupt (control-c)
 trap control_c SIGINT
 
-shopt -s extglob
-set -e
-
 # Check if the user has sudo privileges.
 sudo -v >/dev/null 2>&1 || { echo $script_runner has no sudo privileges ; exit 1; }
 
@@ -35,6 +35,18 @@ echo -e "\n\n"
 echo "#################################"
 echo "########## Rails Ready ##########"
 echo "#################################"
+
+#determin the distro
+if [[ $distro_sig =~ ubuntu ]] ; then
+  distro="ubuntu"
+elif [[ $distro_sig =~ centos ]] ; then
+  #kill the script, centos support is in the works right now
+  echo -e "\nRails Ready will support CentOS very soon (next on my list)\n"
+  exit 1
+else
+  echo -e "\nRails Ready currently only supports Ubuntu and CentOS (at this time)\n"
+  exit 1
+fi
 
 echo -e "\n\n"
 echo "!!! This script will update your system! Run on a fresh install only !!!"
@@ -73,19 +85,12 @@ echo -e "\n=> Creating install dir..."
 cd && mkdir -p railsready/src && cd railsready && touch install.log
 echo "==> done..."
 
-if command -v aptitude >/dev/null 2>&1 || command -v apt-get >/dev/null 2>&1 ; then
-  distro="ubuntu"
-elif command -v yum >/dev/null 2>&1 ; then
-  distro="centos"
-else
-  echo -e "\nRails Ready currently only supports Ubuntu and CentOS\n"
-  exit 1
-fi
+echo -e "\n=> Downloading and running recipe for $distro...\n"
+#Download the distro specific recipe and run it, passing along all the variables as args
+sudo wget --no-check-certificate -O $railsready_path/src/$distro.sh https://github.com/joshfng/railsready/raw/unstable/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
+echo -e "\n==> done running $distro specific commands..."
 
-echo -e "\n=> Downloading and running recipe for $distro..."
-#Download the distro specific commands and run them
-sudo wget --no-check-certificate -O "$railsready_path/src/$distro.sh" https://github.com/joshfng/railsready/raw/unstable/recipes/$distro.sh && cd "$railsready_path/src" && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
-
+#now that all the distro specific packages are installed lets get Ruby
 if [ $whichRuby -eq 1 ] ; then
   # Install Ruby
   echo -e "\n=> Downloading Ruby $ruby_version_string \n"
