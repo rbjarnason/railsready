@@ -84,7 +84,7 @@ fi
 
 echo -e "\n=> Downloading and running recipe for $distro..."
 #Download the distro specific commands and run them
-sudo wget --no-check-certificate -O "$railsready_path/src/$distro.sh" https://github.com/joshfng/railsready/raw/unstable/recipes/$distro.sh && cd "$railsready_path/src" && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $railsready_path $log_file
+sudo wget --no-check-certificate -O "$railsready_path/src/$distro.sh" https://github.com/joshfng/railsready/raw/unstable/recipes/$distro.sh && cd "$railsready_path/src" && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 
 if [ $whichRuby -eq 1 ] ; then
   # Install Ruby
