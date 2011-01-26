@@ -5,7 +5,7 @@
  * CentOS 5.5 (utilizes the Fedora EPEL repo)
 
 # 
-###Run this on a fresh install. It will update your system!
+###Run this on a fresh install. It WILL update your system!
 
 ###To run:
   * `wget --no-check-certificate https://github.com/joshfng/railsready/raw/master/railsready.sh && bash railsready.sh`
