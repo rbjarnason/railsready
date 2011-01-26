@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Rails Ready
+#
 # Author: Josh Frye <joshfng@gmail.com>
 # Licence: MIT
 #

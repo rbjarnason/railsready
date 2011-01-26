@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Rails Ready
+#
 # Author: Josh Frye <joshfng@gmail.com>
 # Licence: MIT
 #
@@ -38,7 +40,7 @@ echo -e "\n=> Installing build tools..."
 sudo yum install -y gcc-c++ patch \
  readline readline-devel zlib zlib-devel \
  libyaml-devel libffi-devel openssl-devel \
- bash curl sqlite-devel mysql-devel >> $log_file 2>&1
+ make automake bash curl sqlite-devel mysql-devel >> $log_file 2>&1
 echo "==> done..."
 
 # Install imagemagick
