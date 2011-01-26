@@ -29,11 +29,9 @@ epel_repo_url="http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-
 #echo "vars set: $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file"
 
 # Add the EPEL repo if centos
-if [[ $distro_sig =~ centos ]] ; then
-  echo -e "\n=> Adding EPEL repo..."
-  su -c "rpm -Uvh $epel_repo_url"
-  echo "==> done..."
-fi
+echo -e "\n=> Adding EPEL repo..."
+su -c "rpm -Uvh $epel_repo_url"
+echo "==> done..."
 
 # Update the system before going any further
 echo -e "\n=> Updating system (this may take awhile)..."
