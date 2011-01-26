@@ -92,7 +92,7 @@ echo -e "\n==> done running $distro specific commands..."
 if [ $whichRuby -eq 1 ] ; then
   # Install Ruby
   echo -e "\n=> Downloading Ruby $ruby_version_string \n"
-  cd src && wget $ruby_source_url
+  cd $railsready_path/src && wget $ruby_source_url
   echo -e "\n==> done..."
   echo -e "\n=> Extracting Ruby $ruby_version_string"
   tar -xzf $ruby_source_tar_name >> $log_file 2>&1
