@@ -132,6 +132,7 @@ elif [ $whichRuby -eq 2 ] ; then
   echo -e "\n==> done..."
   echo -e "\n=> Using 1.9.2 and setting it as default for new shells..."
   echo "=> More information about Rubies can be found at http://rvm.beginrescueend.com/rubies/default/"
+  source $HOME/.bashrc
   rvm --default use $ruby_version >> $log_file 2>&1
   echo "==> done..."
 else
@@ -141,7 +142,7 @@ fi
 
 # Reload bash
 echo -e "\n=> Reloading bashrc so ruby and rubygems are available..."
-source ~/.bashrc
+cd $HOME && source .bashrc
 echo "==> done..."
 
 echo -e "\n=> Installing Bundler, Passenger and Rails.."
