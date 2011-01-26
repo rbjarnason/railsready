@@ -114,6 +114,7 @@ elif [ $whichRuby -eq 2 ] ; then
   "$PWD/rvm-install-head" >> $log_file 2>&1
   [[ -f rvm-install-head ]] && rm -f rvm-install-head
   echo -e "\n=> Setting up RVM to load with new shells..."
+  #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
   if [ $script_runner != "root" ] ; then
     echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> $HOME/.bashrc
   else
@@ -121,12 +122,6 @@ elif [ $whichRuby -eq 2 ] ; then
   fi
   echo "==>done..."
   echo "=> Loading RVM..."
-  #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
-  if [ $script_runner != "root" ] ; then
-    source $HOME/.rvm/scripts/rvm
-  else
-    source /usr/local/rvm/scripts/rvm
-  fi
   source $HOME/.bashrc
   echo "==> done..."
   echo -e "\n=> Installing $ruby_version_string (this will take awhile)..."
