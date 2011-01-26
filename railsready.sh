@@ -88,45 +88,13 @@ echo -e "\n=> Downloading and running recipe for $distro...\n"
 sudo wget --no-check-certificate -O $railsready_path/src/$distro.sh https://github.com/joshfng/railsready/raw/unstable/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 echo -e "\n==> done running $distro specific commands..."
 
-# Update the system before going any further
-echo -e "\n=> Updating system (this may take awhile)..."
-sudo apt-get update >> $log_file 2>&1 \
- && sudo apt-get -y upgrade >> $log_file 2>&1
-echo "==> done..."
-
-# Install build tools
-echo -e "\n=> Installing build tools..."
-sudo apt-get -y install \
-    wget curl build-essential \
-    bison openssl zlib1g \
-    libxslt1.1 libssl-dev libxslt1-dev \
-    libxml2 libffi-dev libyaml-dev \
-    libxslt-dev autoconf libc6-dev \
-    libreadline6-dev zlib1g-dev >> $log_file 2>&1
-echo "==> done..."
-
-echo -e "\n=> Installing libs needed for sqlite and mysql..."
-sudo apt-get -y install libsqlite3-0 sqlite3 libsqlite3-dev libmysqlclient16-dev libmysqlclient16 >> $log_file 2>&1
-echo "==> done..."
-
-# Install imagemagick
-echo -e "\n=> Installing imagemagick (this may take awhile)..."
-sudo apt-get -y install imagemagick libmagick9-dev >> $log_file 2>&1
-echo "==> done..."
-
-# Install git-core
-echo -e "\n=> Installing git..."
-sudo apt-get -y install git-core >> $log_file 2>&1
-echo "==> done..."
->>>>>>> master
-
 #now that all the distro specific packages are installed lets get Ruby
 if [ $whichRuby -eq 1 ] ; then
   # Install Ruby
-  echo -e "\n=> Downloading Ruby $ruby_version_string... \n"
+  echo -e "\n=> Downloading Ruby $ruby_version_string \n"
   cd src && wget $ruby_source_url
   echo -e "\n==> done..."
-  echo -e "\n=> Extracting Ruby $ruby_version_string..."
+  echo -e "\n=> Extracting Ruby $ruby_version_string"
   tar -xzf $ruby_source_tar_name >> $log_file 2>&1
   echo "==> done..."
   echo -e "\n=> Building Ruby $ruby_version_string (this will take awhile)..."
