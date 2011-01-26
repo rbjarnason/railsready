@@ -21,7 +21,12 @@ git_source_url="http://kernel.org/pub/software/scm/git/git-1.7.3.5.tar.bz2"
 git_source_tar_name="git-1.7.3.5.tar.bz2"
 git_source_dir_name="git-1.7.3.5"
 
+epel_repo_url="http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm"
+
 #echo "vars set: $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file"
+
+# Add the EPEL repo
+su -c "rpm -Uvh $epel_repo_url"
 
 # Update the system before going any further
 echo -e "\n=> Updating system (this may take awhile)..."
@@ -42,16 +47,8 @@ sudo yum install -y ImageMagick >> $log_file 2>&1
 echo "==> done..."
 
 # Install Git
-echo -e "\n=> Downloading Git... \n"
-cd src && wget $git_source_url
-echo -e "\n==> done..."
-echo -e "\n=> Extracting Git..."
-tar -xf $git_source_tar_name >> $log_file 2>&1
-echo "==> done..."
-echo -e "\n=> Building Git (this will take awhile)..."
-cd  $git_source_dir_name && ./configure >> $log_file 2>&1 \
- && make >> $log_file 2>&1 \
-  && sudo make install >> $log_file 2>&1
+echo -e "\n=> Installing git..."
+sudo yum install -y git >> $log_file 2>&1
 echo "==> done..."
 
 source ~/bash_profile && source ~/.bashrc
