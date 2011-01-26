@@ -126,10 +126,10 @@ echo "==> done..."
 #now that all the distro specific packages are installed lets get Ruby
 if [ $whichRuby -eq 1 ] ; then
   # Install Ruby
-  echo -e "\n=> Downloading Ruby $ruby_version_string \n"
+  echo -e "\n=> Downloading Ruby $ruby_version_string... \n"
   cd src && wget $ruby_source_url
   echo -e "\n==> done..."
-  echo -e "\n=> Extracting Ruby $ruby_version_string"
+  echo -e "\n=> Extracting Ruby $ruby_version_string..."
   tar -xzf $ruby_source_tar_name >> $log_file 2>&1
   echo "==> done..."
   echo -e "\n=> Building Ruby $ruby_version_string (this will take awhile)..."

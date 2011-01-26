@@ -7,8 +7,8 @@
 # 
 ###Run this on a fresh install. It will update your system!
 
-##To run:
-  * `wget --no-check-certificate https://github.com/joshfng/railsready/raw/master/railsready.sh && bash railsready.sh`
+###To run:
+  * `sudo wget --no-check-certificate https://github.com/joshfng/railsready/raw/master/railsready.sh && bash railsready.sh`
   * The script will ask if you want to build Ruby from source or install RVM
 
 ###What this gives you:
