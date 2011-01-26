@@ -123,10 +123,10 @@ elif [ $whichRuby -eq 2 ] ; then
   [[ -f rvm-install-head ]] && rm -f rvm-install-head
   echo -e "\n=> Setting up RVM to load with new shells..."
   #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
-  echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> $HOME/.bashrc
+  echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> ~/.bashrc
   echo "==> done..."
   echo "=> Loading RVM..."
-  source $HOME/.bashrc
+  source ~/.bashrc
   echo "==> done..."
   echo -e "\n=> Installing Ruby $ruby_version_string (this will take awhile)..."
   echo -e "=> More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
@@ -143,7 +143,7 @@ fi
 
 # Reload bash
 echo -e "\n=> Reloading shell so ruby and rubygems are available..."
-source $HOME/.bashrc
+source ~/.bashrc
 echo "==> done..."
 
 echo -e "\n=> Installing Bundler, Passenger and Rails.."
