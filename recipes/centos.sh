@@ -23,7 +23,6 @@ git_source_url="http://kernel.org/pub/software/scm/git/git-1.7.3.5.tar.bz2"
 git_source_tar_name="git-1.7.3.5.tar.bz2"
 git_source_dir_name="git-1.7.3.5"
 
-distro_sig=$(cat /etc/issue)
 epel_repo_url="http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm"
 
 #echo "vars set: $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file"
@@ -35,7 +34,7 @@ echo "==> done..."
 
 # Update the system before going any further
 echo -e "\n=> Updating system (this may take awhile)..."
-#sudo yum update -y >> $log_file 2>&1
+sudo yum update -y >> $log_file 2>&1
 echo "==> done..."
 
 # Install build tools
@@ -48,7 +47,7 @@ echo "==> done..."
 
 # Install imagemagick
 echo -e "\n=> Installing imagemagick (this may take awhile)..."
-#sudo yum install -y ImageMagick >> $log_file 2>&1
+sudo yum install -y ImageMagick >> $log_file 2>&1
 echo "==> done..."
 
 # Install Git
