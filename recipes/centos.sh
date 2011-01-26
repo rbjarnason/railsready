@@ -30,7 +30,7 @@ epel_repo_url="http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-
 
 # Add the EPEL repo if centos
 echo -e "\n=> Adding EPEL repo..."
-su -c "rpm -Uvh $epel_repo_url"
+sudo -c "rpm -Uvh $epel_repo_url"
 echo "==> done..."
 
 # Update the system before going any further
