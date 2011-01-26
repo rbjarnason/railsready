@@ -84,7 +84,7 @@ cd && mkdir -p railsready/src && cd railsready && touch install.log
 echo "==> done..."
 
 echo -e "\n=> Ensuring there is a .bashrc and .bash_profile..."
-touch $HOME/.bashrc && $HOME/.bash_profile
+sudo touch $HOME/.bashrc && sudo $HOME/.bash_profile
 echo "==> done..."
 
 echo -e "\n=> Downloading and running recipe for $distro...\n"
