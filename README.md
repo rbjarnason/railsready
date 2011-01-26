@@ -1,4 +1,4 @@
-#Rails Ready 
+#Rails Ready
 ###Ruby and Rails setup script for Linux systems
 ###Distros supported:
  * Ubuntu 10.04 LTS
