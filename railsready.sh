@@ -122,11 +122,11 @@ elif [ $whichRuby -eq 2 ] ; then
   else
     echo  '[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> $HOME/.bashrc
   fi
-  echo "==>done..."
+  echo "==> done..."
   echo "=> Loading RVM..."
   source $HOME/.bashrc
   echo "==> done..."
-  echo -e "\n=> Installing $ruby_version_string (this will take awhile)..."
+  echo -e "\n=> Installing Ruby $ruby_version_string (this will take awhile)..."
   echo -e "=> More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
   rvm install $ruby_version >> $log_file 2>&1
   echo -e "\n==> done..."
@@ -141,7 +141,7 @@ fi
 
 # Reload bash
 echo -e "\n=> Reloading bashrc so ruby and rubygems are available..."
-source $HOME/.bashrc
+source ~/.bashrc
 echo "==> done..."
 
 echo -e "\n=> Installing Bundler, Passenger and Rails.."
