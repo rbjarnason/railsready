@@ -83,12 +83,11 @@ echo -e "\n=> Creating install dir..."
 cd && mkdir -p railsready/src && cd railsready && touch install.log
 echo "==> done..."
 
-<<<<<<< HEAD
 echo -e "\n=> Downloading and running recipe for $distro...\n"
 #Download the distro specific recipe and run it, passing along all the variables as args
 sudo wget --no-check-certificate -O $railsready_path/src/$distro.sh https://github.com/joshfng/railsready/raw/unstable/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 echo -e "\n==> done running $distro specific commands..."
-=======
+
 # Update the system before going any further
 echo -e "\n=> Updating system (this may take awhile)..."
 sudo apt-get update >> $log_file 2>&1 \
