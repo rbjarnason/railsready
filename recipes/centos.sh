@@ -50,5 +50,3 @@ echo "==> done..."
 echo -e "\n=> Installing git..."
 sudo yum install -y git >> $log_file 2>&1
 echo "==> done..."
-
-source ~/.bash_profile && source ~/.bashrc
