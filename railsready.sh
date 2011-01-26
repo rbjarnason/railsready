@@ -118,13 +118,13 @@ elif [ $whichRuby -eq 2 ] ; then
   echo -e "\n=> Setting up RVM to load with new shells..."
   #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
   if [ $script_runner != "root" ] ; then
-    echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> $HOME/.bashrc
+    echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> ~/.bashrc
   else
-    echo  '[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> $HOME/.bashrc
+    echo  '[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> ~/.bashrc
   fi
   echo "==> done..."
   echo "=> Loading RVM..."
-  source $HOME/.bashrc
+  source ~/.bashrc
   echo "==> done..."
   echo -e "\n=> Installing Ruby $ruby_version_string (this will take awhile)..."
   echo -e "=> More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
@@ -132,7 +132,7 @@ elif [ $whichRuby -eq 2 ] ; then
   echo -e "\n==> done..."
   echo -e "\n=> Using 1.9.2 and setting it as default for new shells..."
   echo "=> More information about Rubies can be found at http://rvm.beginrescueend.com/rubies/default/"
-  source $HOME/.bashrc
+  source ~/.bashrc
   rvm --default use $ruby_version >> $log_file 2>&1
   echo "==> done..."
 else
@@ -141,8 +141,8 @@ else
 fi
 
 # Reload bash
-echo -e "\n=> Reloading bashrc so ruby and rubygems are available..."
-cd $HOME && source .bashrc
+echo -e "\n=> Reloading shell so ruby and rubygems are available..."
+source ~/.bashrc
 echo "==> done..."
 
 echo -e "\n=> Installing Bundler, Passenger and Rails.."
