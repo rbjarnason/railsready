@@ -41,6 +41,8 @@ if [[ $distro_sig =~ ubuntu ]] ; then
   distro="ubuntu"
 elif [[ $distro_sig =~ centos ]] ; then
   distro="centos"
+elif [[ $distro_sig =~ fedora ]] ; then
+  distro="centos"
 else
   echo -e "\nRails Ready currently only supports Ubuntu and CentOS (at this time)\n"
   exit 1
