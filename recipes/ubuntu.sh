@@ -30,8 +30,8 @@ fi
 
 # Update the system before going any further
 echo -e "\n=> Updating system (this may take awhile)..."
-sudo $pm update >> $log_file 2>&1 \
- && sudo $pm -y upgrade >> $log_file 2>&1
+#sudo $pm update >> $log_file 2>&1 \
+# && sudo $pm -y upgrade >> $log_file 2>&1
 echo "==> done..."
 
 # Install build tools

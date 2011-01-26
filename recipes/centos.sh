@@ -35,7 +35,7 @@ fi
 
 # Update the system before going any further
 echo -e "\n=> Updating system (this may take awhile)..."
-sudo yum update -y >> $log_file 2>&1
+#sudo yum update -y >> $log_file 2>&1
 echo "==> done..."
 
 # Install build tools
