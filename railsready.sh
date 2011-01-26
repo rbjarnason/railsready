@@ -40,9 +40,7 @@ echo "#################################"
 if [[ $distro_sig =~ ubuntu ]] ; then
   distro="ubuntu"
 elif [[ $distro_sig =~ centos ]] ; then
-  #kill the script, centos support is in the works right now
-  echo -e "\nRails Ready will support CentOS very soon (next on my list)\n"
-  exit 1
+  distro="centos"
 else
   echo -e "\nRails Ready currently only supports Ubuntu and CentOS (at this time)\n"
   exit 1
