@@ -38,7 +38,7 @@ echo "#################################"
 echo "########## Rails Ready ##########"
 echo "#################################"
 
-#determin the distro
+#determine the distro
 if [[ $distro_sig =~ ubuntu ]] ; then
   distro="ubuntu"
 elif [[ $distro_sig =~ centos ]] ; then
@@ -46,6 +46,11 @@ elif [[ $distro_sig =~ centos ]] ; then
 else
   echo -e "\nRails Ready currently only supports Ubuntu and CentOS (at this time)\n"
   exit 1
+fi
+
+#now check if user is root
+if [ $script_runner == "root" ] ; then
+  echo -e "\nThis script must be run as a normal user with sudo privileges\n"
 fi
 
 echo -e "\n\n"
@@ -117,14 +122,10 @@ elif [ $whichRuby -eq 2 ] ; then
   [[ -f rvm-install-head ]] && rm -f rvm-install-head
   echo -e "\n=> Setting up RVM to load with new shells..."
   #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
-  if [ $script_runner != "root" ] ; then
-    echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> ~/.bashrc
-  else
-    echo  '[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> ~/.bashrc
-  fi
+  echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> $HOME/.bashrc
   echo "==> done..."
   echo "=> Loading RVM..."
-  source ~/.bashrc
+  source $HOME/.bashrc
   echo "==> done..."
   echo -e "\n=> Installing Ruby $ruby_version_string (this will take awhile)..."
   echo -e "=> More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
@@ -132,7 +133,6 @@ elif [ $whichRuby -eq 2 ] ; then
   echo -e "\n==> done..."
   echo -e "\n=> Using 1.9.2 and setting it as default for new shells..."
   echo "=> More information about Rubies can be found at http://rvm.beginrescueend.com/rubies/default/"
-  source ~/.bashrc
   rvm --default use $ruby_version >> $log_file 2>&1
   echo "==> done..."
 else
@@ -142,7 +142,7 @@ fi
 
 # Reload bash
 echo -e "\n=> Reloading shell so ruby and rubygems are available..."
-source ~/.bashrc
+source $HOME/.bashrc
 echo "==> done..."
 
 echo -e "\n=> Installing Bundler, Passenger and Rails.."
