@@ -41,8 +41,6 @@ if [[ $distro_sig =~ ubuntu ]] ; then
   distro="ubuntu"
 elif [[ $distro_sig =~ centos ]] ; then
   distro="centos"
-elif [[ $distro_sig =~ fedora ]] ; then
-  distro="centos"
 else
   echo -e "\nRails Ready currently only supports Ubuntu and CentOS (at this time)\n"
   exit 1
@@ -118,8 +116,10 @@ elif [ $whichRuby -eq 2 ] ; then
   #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
   if [ $script_runner != "root" ] ; then
     source ~/.rvm/scripts/rvm
-    source ~/.bashrc
+  else
+    source /usr/local/rvm/scripts/rvm
   fi
+  source ~/.bashrc
   echo "==> done..."
   echo -e "\n=> Installing $ruby_version_string (this will take awhile)..."
   echo -e "=> More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
