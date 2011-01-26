@@ -83,6 +83,10 @@ echo -e "\n=> Creating install dir..."
 cd && mkdir -p railsready/src && cd railsready && touch install.log
 echo "==> done..."
 
+echo -e "\n=> Ensuring there is a .bashrc and .bash_profile..."
+touch $HOME/.bashrc && $HOME/.bash_profile
+echo "==> done..."
+
 echo -e "\n=> Downloading and running recipe for $distro...\n"
 #Download the distro specific recipe and run it, passing along all the variables as args
 sudo wget --no-check-certificate -O $railsready_path/src/$distro.sh https://github.com/joshfng/railsready/raw/unstable/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
@@ -115,11 +119,11 @@ elif [ $whichRuby -eq 2 ] ; then
   echo "=> Loading RVM..."
   #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
   if [ $script_runner != "root" ] ; then
-    source ~/.rvm/scripts/rvm
+    source $HOME/.rvm/scripts/rvm
   else
     source /usr/local/rvm/scripts/rvm
   fi
-  source ~/.bashrc
+  source $HOME/.bashrc
   echo "==> done..."
   echo -e "\n=> Installing $ruby_version_string (this will take awhile)..."
   echo -e "=> More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
@@ -136,7 +140,7 @@ fi
 
 # Reload bash
 echo -e "\n=> Reloading bashrc so ruby and rubygems are available..."
-source ~/.bashrc
+source $HOME/.bashrc
 echo "==> done..."
 
 echo -e "\n=> Installing Bundler, Passenger and Rails.."
