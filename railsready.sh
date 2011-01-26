@@ -126,6 +126,7 @@ elif [ $whichRuby -eq 2 ] ; then
   echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> ~/.bashrc
   echo "==> done..."
   echo "=> Loading RVM..."
+  source ~/.rvm/scripts/rvm
   source ~/.bashrc
   echo "==> done..."
   echo -e "\n=> Installing Ruby $ruby_version_string (this will take awhile)..."

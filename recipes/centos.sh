@@ -48,7 +48,7 @@ echo "==> done..."
 
 # Install imagemagick
 echo -e "\n=> Installing imagemagick (this may take awhile)..."
-sudo yum install -y ImageMagick >> $log_file 2>&1
+#sudo yum install -y ImageMagick >> $log_file 2>&1
 echo "==> done..."
 
 # Install Git
