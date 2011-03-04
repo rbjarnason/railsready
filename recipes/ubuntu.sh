@@ -44,11 +44,11 @@ sudo $pm -y install \
     libxslt1.1 libssl-dev libxslt1-dev \
     libxml2 libffi-dev libyaml-dev \
     libxslt-dev autoconf libc6-dev \
-    libreadline6-dev zlib1g-dev libcurl4-openssl-dev >> $log_file 2>&1
+    libncurses5-dev libreadline5-dev zlib1g-dev libcurl4-openssl-dev >> $log_file 2>&1
 echo "==> done..."
 
 echo -e "\n=> Installing libs needed for sqlite and mysql..."
-sudo $pm -y install libsqlite3-0 sqlite3 libsqlite3-dev libmysqlclient16-dev libmysqlclient16 >> $log_file 2>&1
+sudo $pm -y install libsqlite3-0 sqlite3 libsqlite3-dev mysql-server-5.1 libmysqlclient16-dev libmysqlclient16 >> $log_file 2>&1
 echo "==> done..."
 
 # Install imagemagick
